@@ -1,4 +1,8 @@
-class locales($default_value='en_US.UTF-8', $available=['en_US.UTF-8 UTF-8']) {
+class locales(
+  $locale='en_US.UTF-8', 
+  $language='en_US:en',
+  $available=['en_US.UTF-8 UTF-8']
+) {
   package { 'locales':
     ensure => present,
   }
@@ -8,7 +12,11 @@ class locales($default_value='en_US.UTF-8', $available=['en_US.UTF-8 UTF-8']) {
   }
 
   file { '/etc/default/locale':
-    content => inline_template('LANG=<%= default_value + "\n" %>'),
+    content => inline_template(join([
+      'LANG=<%= locale %>',
+      'LANGUAGE=<%= language %>',
+      'LC_ALL=<%= locale %>'
+    ], "\n"),
   }
 
   exec { '/usr/sbin/locale-gen':

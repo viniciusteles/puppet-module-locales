@@ -35,6 +35,7 @@ You can override the default locale and available locales by including
 the module with this special syntax:
 
     class { locales:
-      default_value  => "nb_NO.UTF-8",
+      locale         => "nb_NO.UTF-8",
+      language       => "nb_NO:nb:en
       available      => ["nb_NO.UTF-8 UTF-8", "en_GB.UTF-8 UTF-8"]
     }
