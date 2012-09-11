@@ -16,7 +16,7 @@ class locales(
       'LANG=<%= locale %>',
       'LANGUAGE=<%= language %>',
       'LC_ALL=<%= locale %>'
-    ], "\n"),
+    ], "\n")),
   }
 
   exec { '/usr/sbin/locale-gen':
