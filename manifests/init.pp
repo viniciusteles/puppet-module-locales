@@ -14,6 +14,7 @@ class locales(
   file { '/etc/default/locale':
     content => inline_template(join([
       'LANG=<%= locale %>',
+      'LC_ALL=<%= locale %>',
       'LANGUAGE=<%= language %>'
     ], "\n")),
   }
